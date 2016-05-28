@@ -1,4 +1,4 @@
-# url-matcher
+# typed-url-matcher
 
 [![NPM](https://nodei.co/npm/typed-url-matcher.png?downloads=true)](https://nodei.co/npm/typed-url-matcher/)
 
@@ -16,7 +16,7 @@ A route path is a string that is used to match a URL (or a portion of one). Rout
   - `**` Matches all characters (greedy) until the next `/`, `?`, or `#` and creates a `splat` param
 
 ```js
-import { matchPattern } from 'url-matcher'
+import { matchPattern } from 'typed-url-matcher'
 
 matchPattern('/hello/:name', '/hello/michael')          // WILL MATCH
 matchPattern('/hello/:name', '/hello')                  // WILL NOT MATCH
@@ -34,8 +34,8 @@ matchPattern('/files/**/*.jpg', '/files/path/to/file')  // WILL MATCH
 If a parameter is defined in the form of `:parameterName` in the path, you might want to use specific parsing rules for it. You can achieve that by specifying parameter rules. If for example you want to match only integers for a specific parameter, you can declare your route like this:
 
 ````js
-import { matchPattern } from 'url-matcher'
-import { int } from 'url-matcher/rules'
+import { matchPattern } from 'typed-url-matcher'
+import { int } from 'typed-url-matcher/rules'
 
 var route = {
   pattern: 'users/:userId',
@@ -70,7 +70,7 @@ Not only the Route will match only the desired input, but the corresponding valu
 You can create your custom rules to validate parameters. Here is an example on how to do so:
 
 ````js
-import { createRule } from 'url-matcher/rules'
+import { createRule } from 'typed-url-matcher/rules'
 
 var arrayRule = createRule({
   regex: '(\\[(?:\\w+,)*\\w*\\])',
@@ -87,7 +87,7 @@ var arrayRule = createRule({
 The following rule will match paths that are specified as list of comma-separated values and it will return a list of values in the corresponding item of paramValues. Here is an example of how is used:
 
 ````js
-import { matchPattern } from 'url-matcher'
+import { matchPattern } from 'typed-url-matcher'
 
 var route = {
   pattern: 'images/:tags',
